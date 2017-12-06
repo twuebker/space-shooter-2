@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float tilt;
     public Boundary boundary;
-
+	private DestroyByContact destroyByContact;
     public GameObject shot;
     public Transform shotSpawn;
     public float fireRate;
@@ -23,7 +23,13 @@ public class PlayerController : MonoBehaviour
     {
         if(Input.GetButton("Fire1") && Time.time > nextFire)
         {
-            nextFire = Time.time + fireRate;
+			GameObject gameControllerObject = GameObject.FindWithTag("GameController");
+			if( gameControllerObject != null )
+			{
+				GameController gameController = gameControllerObject.GetComponent<GameController>();
+				gameController.AddScore(-2);
+			}
+			nextFire = Time.time + fireRate;
             Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
             GetComponent<AudioSource>().Play();
         }
@@ -31,8 +37,8 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical   = Input.GetAxis("Vertical");
+		float moveHorizontal = Input.GetAxis("Horizontal");
+		float moveVertical = Input.GetAxis("Vertical");
 
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
         GetComponent<Rigidbody>().velocity = movement * speed;
@@ -46,4 +52,13 @@ public class PlayerController : MonoBehaviour
 
         GetComponent<Rigidbody>().rotation = Quaternion.Euler(0.0f, 0.0f, GetComponent<Rigidbody>().velocity.x * -tilt);
     }
+	void FireBigShot()
+	{
+		nextFire = Time.time + fireRate;
+		Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+		GetComponent<AudioSource>().Play();
+	}
+	public void increaseFireRate() {
+		fireRate += -0.05f;
+	}
 }

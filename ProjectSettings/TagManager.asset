@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Boundary
   - Enemy
+  - Player2
+  - New tag
   layers:
   - Default
   - TransparentFX
