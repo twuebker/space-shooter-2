@@ -1,0 +1,30 @@
+	
+
+	Theo Wübkers Space Shooter
+		
+	Es gibt einen Spielmodus, dieser heißt Co-Op mit 2 Spielern, deren Score sich addiert. Die Player haben verschiedene Controls, die auf dem Startbildschirm
+	angezeigt werden, und unterschiedliche Engine-Flammen um sie besser unterscheiden zu können. Der eine Player wird mit W/A/S/D gesteuert und feuert mit der 
+	Taste f, währrend der andere mit den Pfeiltasten gesteuert wird und mit der rechten Alt Taste (altgr) schießt.
+
+	Neue Texte:
+	-Ein Text für die überlebte Welle, der auch einen Punktewert mitliefert, der auf den Score addiert wird (fürs Überleben der Welle)
+	-Ein Text auf dem Start Bildschirm, der die Controls der Player anzeigt und sich nach GameStart deaktiviert.
+	-Upgrade Text, der aufgerufen wird wenn Score den Wert 40 erreicht hat.
+
+	Upgrade:
+	wenn Score 40 erreicht, kann der Player verbessert werden indem man auf "U" drückt. Dies verbessert die Feuerrate beider Spieler und zieht den Score ab.
+
+	Hazards:
+	Es gibt Enemy Ships und verschiedene Asteroiden, die sich auch unterschiedlich schnell bewegen. Die Menge der Hazards (HazardCount) erhöht sich nach jedem 
+	Wellendurchlauf.
+
+	Score:
+	Pro Schuss werden 2 Score abgezogen, damit nicht gespammt wird. Erreicht Score einen Wert unter 0, explodieren beide Player und es ist Game Over. Ein Spieler
+	kann nur für die Dauer einer Welle Score = 0 haben, da er fürs überleben dieser dann extra Score als Belohnung kriegt (wie oben erwähnt).
+
+	
+	
+	
+	
+	
+	

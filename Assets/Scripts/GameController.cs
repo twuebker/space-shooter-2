@@ -27,6 +27,7 @@ public class GameController : MonoBehaviour
 
     public int score;
 	public int PlayerDeathCount;
+	public int waveScore;
 
     void Start()
     {
@@ -40,6 +41,7 @@ public class GameController : MonoBehaviour
         StartCoroutine( SpawnWaves() );
         score = 20;
         UpdateScore();
+		waveScore = 5;
     }
 
     void Update()
@@ -107,6 +109,7 @@ public class GameController : MonoBehaviour
 
             }
 			counter++;
+			hazardCount++;
 			if (!gameOver) 
 			{
 				nextWaveCallText (counter);
@@ -138,11 +141,15 @@ public class GameController : MonoBehaviour
     {
         gameOverText.text = "Game over!";
 		hideUpgradeText();
+		resetWaveText ();
         gameOver = true;
     }
 	//nextWave Text
 	public void nextWaveCallText(int wave) {
-		nextWaveText.text = "Wave " + wave + " completed!";
+		waveScore++;
+		nextWaveText.text = "Wave " + wave + " completed! Reward: "+waveScore +" Points!";
+
+		AddScore (waveScore);
 
 	}
 	public void resetWaveText() {
